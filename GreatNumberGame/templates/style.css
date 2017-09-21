@@ -1,0 +1,39 @@
+*{
+  text-align: center;
+  font-family: sans-serif;
+}
+#title{
+  text-decoration: underline;
+}
+div{
+  margin:5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px;
+}
+#wrong{
+  width:250px;
+  height:250px;
+  background-color: red;
+}
+#correct{
+  width:250px;
+  height:250px;
+  background-color: green;
+}
+#again{
+  border-radius: 5px;
+  width:100px;
+  height:50px;
+}
+#submit{
+  border-radius: 5px;
+  width:100px;
+  height:50px;
+  margin:10px;
+}
+#guess{
+  height:40px;
+  width:200px;
+  border-radius: 5px;
+  font-size: 35px;
+}
