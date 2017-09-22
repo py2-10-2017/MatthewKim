@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style3.css')}}">
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+    <span>{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}</span>
+    <form class="" action="/check" method="post">
+      Email:<input class="input" name="email" type="text"><br>
+      First Name:<input class="input" name="first_name" type="text"><br>
+      Last Name:<input class="input" name="last_name" type="text"><br>
+      Date Of Birth:<input class="date" name="date" type="date"><br>
+      Password:<input class="input" name="password" type="text"><br>
+      Confirm Password:<input class="input" name="confirm_password" type="text"><br>
+      <input id="submit" type="submit">
+    </form>
+  </body>
+</html>

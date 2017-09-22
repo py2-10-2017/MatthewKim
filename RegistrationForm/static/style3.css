@@ -1,0 +1,24 @@
+*{
+  font-family: sans-serif;
+  font-size: 30px;
+}
+span{
+  color:red;
+}
+.input{
+  height:35px;
+  width:500px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px;
+  margin-bottom: 10px;
+}
+h1{
+  text-shadow: 1px 1px 1px
+}
+.date{
+  height:35px;
+}
+#submit{
+  height:35px;
+  width:150px;
+}
