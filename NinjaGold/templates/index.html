@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja Money</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='indexstyle3.css')}}">
+  </head>
+  <body>
+    <div class="money">
+      <h2>Your Gold:</h2>
+      <h2>{{money}}</h2>
+    </div>
+    <div class="places">
+      <h3>Farm</h3>
+      <h5>(earns 10-20 gold)</h5>
+      <form class="" action="/process_money" method="post">
+        <input hidden name="type" value="farm">
+        <input  class="gold" type="submit" value="Find Gold!">
+      </form>
+    </div>
+    <div class="places">
+      <h3>Cave</h3>
+      <h5>(earns 5-10 gold)</h5>
+      <form class="" action="/process_money" method="post">
+        <input hidden name="type" value="cave">
+        <input  class="gold" type="submit" value="Find Gold!">
+      </form>
+    </div>
+    <div class="places">
+      <h3>House</h3>
+      <h5>(earns 2-5 gold)</h5>
+      <form class="" action="/process_money" method="post">
+        <input hidden name="type" value="house">
+        <input class="gold" type="submit" value="Find Gold!">
+      </form>
+    </div>
+    <div class="places">
+      <h3>Casino</h3>
+      <h5>(earns/takes 0-50 gold)</h5>
+      <form class="" action="/process_money" method="post">
+        <input hidden name="type" value="casino">
+        <input  class="gold" type="submit" value="Find Gold!">
+      </form>
+    </div>
+    <h4>Activities</h4>
+    <div class="activity">
+      {% for activity in session['activity'] %}
+        {% if activity.startswith("L") %}
+          <p><span>{{activity}}</span></P><br>
+        {% else %}
+          <p>{{ activity}}</p><br>
+          {% endif %}
+      {% endfor %}
+    </div>
+    <form class="" action="/process_money" method="post">
+      <input id="reset" type="submit" name="type" value="Reset">
+    </form>
+  </body>
+</html>
