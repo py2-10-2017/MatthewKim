@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^',include('apps.ninjagold.urls')),
     url(r'^', include('apps.blogsapp.urls')),
     url(r'^', include('apps.sessionwordsapp.urls')),
     url(r'^',include('apps.amadon.urls'))

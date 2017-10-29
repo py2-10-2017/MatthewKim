@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.ninjagold',
     'apps.amadon',
     'apps.sessionwordsapp',
     'apps.blogsapp',
