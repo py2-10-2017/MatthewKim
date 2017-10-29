@@ -20,5 +20,7 @@ urlpatterns = [
     url(r'^',include('apps.ninjagold.urls')),
     url(r'^', include('apps.blogsapp.urls')),
     url(r'^', include('apps.sessionwordsapp.urls')),
-    url(r'^',include('apps.amadon.urls'))
+    url(r'^',include('apps.amadon.urls')),
+    url(r'^', include('apps.usersapp.urls')),
+    url(r'^', include('apps.surveysapp.urls'))
 ]
