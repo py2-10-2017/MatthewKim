@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.amadon',
+    'apps.sessionwordsapp',
     'apps.blogsapp',
     'django.contrib.admin',
     'django.contrib.auth',

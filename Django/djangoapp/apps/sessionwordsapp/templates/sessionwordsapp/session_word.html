@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Session Words</title>
+    <style media="screen">
+    *{
+      font-family:sans-serif;
+    }
+      h1{
+        text-shadow: 1px 1px 3px gray;
+        color:pink
+      }
+      h4{
+        display: inline-block;
+        margin:5px
+      }
+      #add{
+        width:400px;
+        display: inline-block;
+        padding-left: 10px;
+      }
+      .history{
+        width:400px;
+        display: inline-block;
+        vertical-align: top;
+        border-left: 3px solid black;
+        padding-left: 10px;
+        margin-top: 25px;
+      }
+      .color{
+        margin-left: 10px;
+      }
+      #addword{
+        border:2px solid black;
+        background: -webkit-linear-gradient(rgb(22, 109, 224),rgb(67, 110, 168),rgb(22, 109, 224));
+        margin: 10px
+      }
+      #clear{
+        border:2px solid black;
+        background: -webkit-linear-gradient(rgb(193, 60, 60),rgb(112, 28, 28),rgb(193, 60, 60));
+        margin: 10px;
+        color:white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="add"><h1>Add a new word!</h1>
+      <form class="" action="/session_word/add" method="POST">
+        {% csrf_token %}
+        <input name="word" type="text"><br>
+        Choose color:<br>
+        <input class="color" name="color" type="radio" value="Red">Red<br>
+        <input class="color" name="color" type="radio" value="Green">Green<br>
+        <input class="color" name="color" type="radio" value="Blue">Blue<br>
+        <input type="checkbox" name="big" value="big">Show in BIG fonts!<br>
+        <input id="addword" type="submit" value="Add to Session">
+      </form>
+    </div>
+    <div class="history">
+      <form class="" action="session_word/clear" method="POST">
+        {% csrf_token %}
+        <input id="clear" type="submit" value="Clear Session">
+      </form>
+      {% for word in request.session.words %}
+        <div class="words">
+          <h4 style="color:{{word.color}}; font-size:{{word.big}}" class="word">{{word.word}}</h4> {{word.time}}
+        </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
