@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users</title>
+    <style media="screen">
+      table{
+        border-collapse: collapse;
+        width:100%
+      }
+      tr,th,td{
+        border:1px solid black;
+        padding:5px;
+      }
+      tr:nth-child(even){
+        background-color: #dddddd
+      }
+      form{
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Users</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.full_name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.created_at}}</td>
+            <td>
+              <form class="" action="/users/{{user.id}}" method="post">
+              {% csrf_token %}
+              <input type="submit" value="Show">
+              </form>
+              <form class="" action="/users/{{user.id}}/edit" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Edit">
+              </form>
+              <form class="" action="/users/{{user.id}}/destroy" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      </thead>
+    </table>
+    <form class="" action="users/create" method="post">
+      {% csrf_token %}
+      <input type="submit" name="" value="Add a new user">
+    </form>
+  </body>
+</html>

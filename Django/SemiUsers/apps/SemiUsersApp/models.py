@@ -7,4 +7,5 @@ class Users(models.Model):
     full_name=models.CharField(max_length=255)
     email=models.CharField(max_length=255)
     created_at=models.DateTimeField(auto_now_add=True)
+
 # Create your models here.
