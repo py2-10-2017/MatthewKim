@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Books Home</title>
+    <style media="screen">
+      #header{
+        display:inline-block;
+        width:100%;
+      }
+      p{
+        display: inline-block;
+      }
+      #headerlinks{
+        float:right
+      }
+      .books{
+        display: inline-block;
+        vertical-align: top;
+      }
+      #recent{
+        width:50%;
+      }
+      #allbooksdiv{
+        width:40%;
+
+      }
+      #allbooks{
+        border: 1px solid black;
+        overflow-y: scroll;
+        height:200px;
+      }
+      .book{
+        display: block;
+      }
+      .review{
+        margin-left: 10px;
+        font-size: 10px;
+        display: block;
+      }
+      a{
+        color:blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <p id="welcome">
+        Welcome, {{request.session.name}}
+      </p>
+      <div id="headerlinks">
+        <a href="/logout">Logout</a>
+        <a href="/books/add">Add Book and Review</a>
+      </div>
+    </div>
+    <div id="recent" class="books">
+      <h3>Recent Book Reviews:</h3>
+      {% for review in recents %}
+        <a href="/books/{{review.book.id}}">{{review.book.title}}</a><br>
+        <p class="review"> Rating: {{review.stars}}</p>
+        <p class="review"><a href="/users/{{review.user.id}}">{{review.user.alias}}</a> says: {{review.review}}</p>
+        <p class="review">Posted on {{review.created_at}}</p>
+      {% endfor %}
+    </div>
+    <div id="allbooksdiv" class="books">
+      <h3>Other Books with Reviews:</h3>
+      <div id="allbooks">
+        {% for book in books %}
+          <a class="" href="/books/{{book.id}}">{{book.title}}</a><br>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

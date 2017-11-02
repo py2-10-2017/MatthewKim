@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Book and Review</title>
+    <style media="screen">
+      .header{
+        width: 100%;
+        display: inline-block;
+      }
+      a{
+        float: right;
+        margin: 5px;
+      }
+      h2{
+        margin-top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="/books">Home</a>
+      <a href="/logout">Logout</a>
+    </div>
+    <div class="review">
+      <h2>Add a New Book Title and a Review:</h2>
+      <form class="" action="/books/add/process" method="post">
+        {% csrf_token %}
+        <label for="title">Book Title:</label> <input type="text" name="title"><br>
+        <label for="author">Author: </label>
+          Add a new author: <input type="text" name="author"><br>
+          Or choose from the list:
+          <select name="author">
+            {% for book in books %}
+              <option value="{{book.author}}">{{book.author}}</option>
+            {% endfor %}
+          </select><br>
+        <label for="review">Review: </label><br><textarea name="review" rows="8" cols="80"></textarea><br>
+        <label for="raing">Rating: </label>
+        <select name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select> Stars <br>
+        <input type="submit" value="Add Book and Review">
+      </form>
+    </div>
+  </body>
+</html>

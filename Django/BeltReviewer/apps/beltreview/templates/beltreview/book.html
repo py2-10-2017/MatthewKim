@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Book</title>
+    <style media="screen">
+      .header{
+        width: 100%;
+        display: inline-block;
+      }
+      .header a{
+        float: right;
+        margin:5px;
+      }
+      .review{
+        border-top: 1px solid black;
+        padding:5px;
+      }
+      .reviews{
+        display: inline-block;
+        padding:10px;
+        width:50%;
+        vertical-align: top;
+      }
+      .addreview{
+        display: inline-block;
+        width:45%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="/books">Home</a>
+      <a href="/logout">Logout</a>
+    </div>
+    <div class="main">
+      <div class="book">
+        <h3>{{book.title}}</h3>
+        <h5>Author: {{book.author}}</h5>
+      </div>
+      <div class="reviews">
+        <h3>Reviews:</h3>
+        {% for review in reviews %}
+          <div class="review">
+            Rating: {{review.stars}}
+            <!--<script>
+              var x,i=""
+              for (x=1;x<=review.stars}};x++){
+                i="<img src='/static/star.png' alt='*'>"
+                star+=1
+              }
+              document.getElementById("star").innerHTML = i;
+            </script>-->
+            <br>
+            <a href="/users/{{review.user_id}}">{{review.user.alias}}</a> says: {{review.review}}<br>
+            {{review.created_at}}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="addreview">
+        <h3>Add a Review:</h3>
+        <form class="" action="/{{book.id}}/add/review" method="post">
+          {% csrf_token %}
+          <textarea name="review" rows="8" cols="40"></textarea><br>
+          <label for="rating">Rating: </label>
+          <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select> Stars<br>
+          <input type="submit" name="" value="Submit Review">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
